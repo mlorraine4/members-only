@@ -1,0 +1,13 @@
+extends layout
+
+block content 
+    h1 Log In
+    p
+      a(href='/') Back to Home
+
+    form(action='' method='POST')
+        label(for='username') Username
+        input(name='username' type='text' required)
+        label(for='password') Password
+        input(name='password' type='password' required)
+        button(type='submit') Log In

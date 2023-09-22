@@ -1,0 +1,14 @@
+extends layout
+
+block content 
+    h1 Join Membership
+    p
+      a(href='/') Back to Home
+      
+    form(action='' method='POST')
+        label(for='password') Password
+        input(name='password' type='password' required="true")
+        button(type='submit') Join
+    if errors
+        each error in errors
+            li!= error.msg

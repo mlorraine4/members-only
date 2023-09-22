@@ -1,0 +1,22 @@
+extends layout
+
+block content 
+    h1 Sign Up
+    p
+      a(href='/') Back to Home
+      
+    form(action='' method='POST')
+        label(for='first_name') First Name
+        input(name='first_name'  type='text' required value=(undefined===user ? '' : user.first_name))
+        label(for='last_name') Last Name
+        input(name='last_name'  type='text' required value=(undefined===user ? '' : user.last_name))
+        label(for='username') Username
+        input(name='username' type='text'  required value=(undefined===user ? '' : user.username))
+        label(for='password') Password
+        input(name='password' type='password' required)
+        label(for='confirm_password') Confirm Password
+        input(name='confirm_password' type='password'  required)
+        button(type='submit') Sign Up
+    if errors
+        each error in errors
+            li!= error.msg

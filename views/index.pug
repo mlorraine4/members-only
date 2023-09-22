@@ -1,0 +1,107 @@
+extends layout
+
+block content
+
+  if user
+    if user.is_admin
+      h1= title
+      p Welcome, 
+        span(class='username') #{user.username}!
+      div(class='member-info')
+        img(src='/images/crown.png' class='admin-img')
+        p Member status: Admin
+      
+      p
+      a(href='/new-message') Send Message
+      p
+      a(href='/log-out') Log Out
+
+      h2 Member Forum
+      
+      if messages.length > 0
+        each message in messages
+          div(class='admin-message-container')
+            div(class='message-container')
+              div(class='message-author')!=message.username
+                form(action="" method="POST" class='form-delete')
+                  input#messageId(type="hidden", name="messageId", required="true", value=message._id)
+                  button(type="submit") Delete
+              div(class='message-title')!= message.title
+              div(class='message-text')!= message.text
+      else
+        p There are no messages.
+  
+    else if user.is_member
+      h1= title
+      p Welcome, 
+        span(class='username') #{user.username}!
+
+      div(class='member-info')
+        img(src='/images/membership-card.png' class='admin-img')
+        p Member status: Member
+
+      p
+      a(href='/become-admin') Become an Admin
+      p
+      a(href='/new-message') Send Message
+      p
+      a(href='/log-out') Log Out
+
+      h2 Member Forum
+      
+      if messages.length > 0
+        each message in messages
+          div(class='message-container')
+            div(class='message-author')!=message.username
+            div(class='message-title')!= message.title
+            div(class='message-text')!= message.text
+      else
+        p There are no messages.
+
+    else
+      h1= title
+      p Welcome, #{user.username}!
+
+      div(class='member-info')
+        img(src='/images/profile-user.png' class='admin-img')
+        p Member status: User 
+      
+      p
+      a(href='/join') Become a Member
+      p
+      a(href='/new-message') Send Message
+      p
+      a(href='/log-out') Log Out
+
+      h2 Member Forum
+      
+      if messages.length > 0
+        each message in messages
+          div(class='message-container')
+            div(class='message-author') anonymous
+            div(class='message-title')!= message.title
+            div(class='message-text')!= message.text
+      else
+        p There are no messages.
+
+  else 
+    h1= title
+    h3 Welcome to a super secret Members Only Forum!
+    p Please sign up to post messages on our Forum, and become a member to see who posts are by.
+
+    p
+    a(href='/log-in') Log In
+    p
+    a(href='/sign-up') Sign up
+  
+    h2 Member Forum
+    
+    if messages.length > 0
+     each message in messages
+          div(class='message-container')
+            div(class='message-author') anonymous
+            div(class='message-title')!= message.title
+            div(class='message-text')!= message.text
+    else
+      p There are no messages.
+
