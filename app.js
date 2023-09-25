@@ -55,6 +55,7 @@ passport.deserializeUser(async (id, done) => {
 
 var indexRouter = require('./routes/index');
 var usersRouter = require('./routes/users');
+const membersOnlyRouter = require("./routes/membersonly");
 
 var app = express();
 
@@ -78,6 +79,7 @@ app.use((req, res, next) => {
 
 app.use('/', indexRouter);
 app.use('/users', usersRouter);
+app.use('/membersOnly', membersOnlyRouter);
 
 // catch 404 and forward to error handler
 app.use(function(req, res, next) {

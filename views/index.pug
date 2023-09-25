@@ -12,9 +12,9 @@ block content
         p Member status: Admin
       
       p
-      a(href='/new-message') Send Message
+      a(href='/membersonly/new-message') Send Message
       p
-      a(href='/log-out') Log Out
+      a(href='/membersonly/log-out') Log Out
 
       h2 Member Forum
       
@@ -41,11 +41,11 @@ block content
         p Member status: Member
 
       p
-      a(href='/become-admin') Become an Admin
+      a(href='/membersonly/become-admin') Become an Admin
       p
-      a(href='/new-message') Send Message
+      a(href='/membersonly/new-message') Send Message
       p
-      a(href='/log-out') Log Out
+      a(href='/membersonly/log-out') Log Out
 
       h2 Member Forum
       
@@ -60,18 +60,19 @@ block content
 
     else
       h1= title
-      p Welcome, #{user.username}!
+      p Welcome, 
+        span(class='username') #{user.username}!
 
       div(class='member-info')
         img(src='/images/profile-user.png' class='admin-img')
         p Member status: User 
       
       p
-      a(href='/join') Become a Member
+      a(href='/membersonly/become-member') Become a Member
       p
-      a(href='/new-message') Send Message
+      a(href='/membersonly/new-message') Send Message
       p
-      a(href='/log-out') Log Out
+      a(href='/membersonly/log-out') Log Out
 
       h2 Member Forum
       
@@ -90,9 +91,9 @@ block content
     p Please sign up to post messages on our Forum, and become a member to see who posts are by.
 
     p
-    a(href='/log-in') Log In
+    a(href='/membersonly/log-in') Log In
     p
-    a(href='/sign-up') Sign up
+    a(href='/membersonly/sign-up') Sign up
   
     h2 Member Forum
     
